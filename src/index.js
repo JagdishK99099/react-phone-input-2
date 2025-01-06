@@ -798,9 +798,20 @@ class PhoneInput extends React.Component {
         // but the structure do not looks very good
         const searchedCountries = allCountries.filter(({ name, localName, iso2 }) =>
           [`${name}`, `${localName || ''}`].some(field => field.toLowerCase().includes(sanitizedSearchValue)))
-        this.scrollToTop()
-        return [...new Set([].concat(iso2countries, searchedCountries))]
+      // Concatenate and directly sort the combined array
+      const sortedCountries = [...new Set([].concat(iso2countries, searchedCountries))].sort(
+        ({ name: nameA }, { name: nameB }) => {
+          const startsWithA = nameA.toLowerCase().startsWith(sanitizedSearchValue);
+          const startsWithB = nameB.toLowerCase().startsWith(sanitizedSearchValue);
+          if (startsWithA && !startsWithB) return -1; // A should come before B
+          if (!startsWithA && startsWithB) return 1;  // B should come before A
+          return nameA.toLowerCase().localeCompare(nameB.toLowerCase()); // Otherwise, sort alphabetically
+        }
+      );
+      this.scrollToTop();
+      return sortedCountries;
       }
+
     } else {
       return allCountries
     }

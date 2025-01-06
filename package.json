@@ -1,18 +1,18 @@
 {
-  "name": "react-phone-input-2",
-  "version": "2.15.1",
+  "name": "react-phone-input-sort",
+  "version": "2.15.2",
   "description": "A react component to format phone numbers",
   "main": "lib/lib.js",
   "typings": "index.d.ts",
   "scripts": {
     "test": "jest",
-    "start": "TARGET=dev_js NODE_ENV=development webpack-dev-server --progress",
-    "start:css": "TARGET=dev_css NODE_ENV=development webpack-dev-server --progress",
-    "build": "export SET NODE_OPTIONS=--openssl-legacy-provider && npm run build:js && npm run build:css",
-    "build:js": "TARGET=build_js NODE_ENV=production webpack -p --progress",
-    "build:css": "TARGET=build_css NODE_ENV=production webpack -p --progress && rm ./main.js",
+    "start": "cross-env TARGET=dev_js NODE_ENV=development webpack-dev-server --progress",
+    "start:css": "cross-env TARGET=dev_css NODE_ENV=development webpack-dev-server --progress",
+    "build": "npm run build:js && npm run build:css",
+    "build:js": "cross-env NODE_OPTIONS=--openssl-legacy-provider TARGET=build_js NODE_ENV=production webpack -p --progress",
+    "build:css": "cross-env NODE_OPTIONS=--openssl-legacy-provider TARGET=build_css NODE_ENV=production webpack -p --progress && del main.js",
     "prepublishOnly": "npm run build",
-    "analyze": "TARGET=analyze NODE_ENV=production webpack -p --progress"
+    "analyze": "cross-env TARGET=analyze NODE_ENV=production webpack -p --progress"
   },
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
     "README.md",
     "index.d.ts"
   ],
-  "author": "Nick Reiley <bloomber111@gmail.com> (https://github.com/bl00mber)",
+  "author": "Jagdish <jagdish.k@dvijinfotech.com>",
   "contributors": [
     "Raza Gill <raza.gill@outlook.com> (https://github.com/razagill)"
   ],

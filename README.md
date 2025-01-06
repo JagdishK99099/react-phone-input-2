@@ -1,5 +1,20 @@
-# React-Phone-Input-2
+# React-Phone-Input-2 (Sort)
+
+
 Highly customizable phone input component with auto formatting.
+
+## Notes
+
+**Updated Search Behavior**: 
+
+In the previous version of `react-phone-input-sort`, when users typed a letter in the search field (e.g., "M"), the countries containing the letter "M" were displayed first. Now, in this updated version, when a user searches for a letter, such as "M", the countries that **start** with the letter "M" will appear at the top of the search results. 
+
+For example, when searching for "M":
+
+- **Before**: Countries like **"Germany"**, **"Romania"**, etc., would appear first if they contained the letter "M".
+- **Now**: Countries like **"Malaysia"**, **"Mexico"**, etc., will appear first as they start with the letter "M".
+
+This change improves the accuracy and efficiency of the search function, making it easier for users to find countries starting with the desired letter.
 
 [![npm version](https://img.shields.io/npm/v/react-phone-input-2.svg?style=flat)](https://www.npmjs.com/package/react-phone-input-2)
 [![npm downloads](https://img.shields.io/npm/dm/react-phone-input-2.svg?style=flat)](https://www.npmjs.com/package/react-phone-input-2)
@@ -10,13 +25,13 @@ Highly customizable phone input component with auto formatting.
 
 ## Installation
 ```shell-script
-npm install react-phone-input-2 --save
+npm i react-phone-input-sort --save
 ```
 
 ## Usage
 ```jsx
-import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/style.css'
+import PhoneInput from 'react-phone-input-sort'
+import 'react-phone-input-sort/lib/style.css'
 
 <PhoneInput
   country={'us'}
